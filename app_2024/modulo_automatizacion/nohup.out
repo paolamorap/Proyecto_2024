@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/du/app_2024/modulo_automatizacion/main.py", line 1, in <module>
+    from watchdog.observers import Observer
+ModuleNotFoundError: No module named 'watchdog'
+Traceback (most recent call last):
+  File "/home/du/app_2024/modulo_automatizacion/main.py", line 1, in <module>
+    from watchdog.observers import Observer
+ModuleNotFoundError: No module named 'watchdog'
+Traceback (most recent call last):
+  File "/home/du/app_2024/modulo_automatizacion/main.py", line 1, in <module>
+    from watchdog.observers import Observer
+ModuleNotFoundError: No module named 'watchdog'

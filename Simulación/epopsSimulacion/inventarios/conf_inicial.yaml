@@ -1,0 +1,54 @@
+switches_cisco:
+  hosts:
+    switch1:
+      epops_host: 10.0.1.7
+  vars:
+    epops_user: networking
+    epops_ssh_pass: Ygvfe34a.2018
+    epops_snmp: prueba
+    marca: cisco
+    device_type: cisco_ios
+
+switches_hp:
+  hosts:
+    switch1:
+      epops_host: 10.0.1.9
+  vars:
+    epops_user: networking
+    epops_ssh_pass: Ygvfe34a.2018
+    epops_snmp: prueba
+    marca: hp
+    device_type: hp_comware
+
+switches_hp1:
+  hosts:
+    switch1:
+      epops_host: 10.0.1.5
+  vars:
+    epops_user: networking
+    epops_ssh_pass: Ygvfe34a.2018
+    epops_snmp: prueba
+    marca: hp1
+    device_type: generico
+
+switches_3comm:
+  hosts:
+    switch1:
+      epops_host: 10.0.1.18
+  vars:
+    epops_user: networking
+    epops_ssh_pass: Ygvfe34a.2018
+    epops_snmp: prueba
+    marca: 3Com
+    device_type: generico
+
+switches_tplink:
+  hosts:
+    switch1:
+      epops_host: 10.0.1.13
+  vars:
+    epops_user: networking
+    epops_ssh_pass: Ygvfe34a.2018
+    epops_snmp: prueba
+    marca: tplink
+    device_type: generico

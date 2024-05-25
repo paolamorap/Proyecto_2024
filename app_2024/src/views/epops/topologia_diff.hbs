@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DESCRIPCION GRAFICA - TOPOLOGIA</title>
+    <link rel="icon" href="icon.ico" type="image/x-icon"> <!-- Agregar esta línea para el favicon -->
+    <meta charset = "utf-8">
+    <link rel="stylesheet" href="/bower_components/next-bower/css/next.css">
+    <style>
+        .button-row {
+            display: flex;
+            justify-content: center; /* Centra los botones horizontalmente */
+            gap: 100px; /* Espacio entre botones */
+            margin-bottom: 10px; /* Espacio debajo del grupo de botones */
+            width: 100%; /* Ocupar el ancho completo del contenedor padre */
+            background-color: #ffff; /* Un fondo claro para destacar la zona */
+            padding: 10px 0; /* Padding vertical */
+        }
+
+        button {
+            background: linear-gradient(145deg, #009fdf, #006fad);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px; /* Bordes ligeramente redondeados */
+            cursor: pointer;
+            font-size: 15px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #007dce, #004e8e);
+            box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+        }
+
+    </style>
+    <script type="text/javascript" src="/bower_components/next-bower/js/next.js"></script>
+    <script type="text/javascript" src="/js/topologia_diferencias.js"></script>
+    <script type="text/javascript" src="/js/conf_topologia_diff.js"></script>
+
+    
+</head>
+<body>
+    <div class="button-row">
+        <button onclick="horizontal()">Horizontal layout</button>
+        <button onclick="vertical()">Vertical layout</button>
+        <button id="toggleLabelsButton">Interfaces</button>
+        <form action="/topologia" method="post">
+            <button type="submit">Confirmar Cambios</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

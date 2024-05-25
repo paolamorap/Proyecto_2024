@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TOPOLOGIA CENTRO SUR</title>
+    <link rel="icon" href="icon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/bower_components/next-bower/css/next.css">
+    <style>
+        .controls-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background-color: #ffff; /* Un fondo claro para destacar la zona */
+            padding: 10px 0;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 100px; /* Espacio entre botones */
+            margin-bottom: 10px; /* Espacio debajo del grupo de botones */
+        }
+
+        button {
+            background: linear-gradient(145deg, #009fdf, #006fad);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px; /* Bordes ligeramente redondeados */
+            cursor: pointer;
+            font-size: 15px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #007dce, #004e8e);
+            box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+        }
+
+        #lastReloadTime {
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
+
+        
+    </style>
+    <script type="text/javascript" src="/bower_components/next-bower/js/next.js"></script>
+    <script type="text/javascript" src="/js/topologia_fija.js"></script>
+    <script type="text/javascript" src="/js/conf_topologia_fija.js"></script>
+    <script type="text/javascript">
+        // Función que muestra la hora actual y recarga la página cada 1 minuto
+        function updateLastReloadTime() {
+            var now = new Date();
+            var display = now.getHours() + ":" + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes() + ":" + (now.getSeconds() < 10 ? '0' : '') + now.getSeconds();
+            document.getElementById('lastReloadTime').innerText = 'Última recarga: ' + display;
+        }
+
+        window.onload = function() {
+            updateLastReloadTime(); // Actualizar al cargar la página
+            setInterval(function() {
+                window.location.href = window.location.href; // Forzar recarga desde el servidor
+            }, 60000); // 60000 milisegundos = 1 minuto
+        }
+
+    </script>
+</head>
+
+<div class="controls-container">
+    <div class="button-row">
+        <button onclick="horizontal()">Diseño Horizontal</button>
+        <button onclick="vertical()">Diseño Vertical</button>
+        <button id="toggleLabelsButton">Interfaces</button>
+    </div>
+    <p id="lastReloadTime"></p> <!-- Elemento para mostrar la hora de la última recarga -->
+</div>
+
+</html>
