@@ -96,7 +96,7 @@ function stp(req, res) {
       return res.redirect('/');
     }
   
-    const pathToPythonScript = '/home/du/Prototipo_App2024/app_2024/Epops/main_balanceo.py';
+    const pathToPythonScript = '/home/du/Prototipo_App2024/app_2024/Epops/mainBalanceo.py';
     console.log(`Ejecutando script: ${pathToPythonScript}`);
     exec(`python3 ${pathToPythonScript}`, (error, stdout, stderr) => {
       if (error) {
