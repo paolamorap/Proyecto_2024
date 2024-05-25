@@ -12,7 +12,7 @@ echo "Versión de Node instalada:"
 sudo node -v
 echo "Versión de NPM instalada:"
 sudo npm -v
-
+du 
 echo "Instalando MySQL..."
 sudo apt-cache search mysql-server
 sudo apt install -y mysql-server

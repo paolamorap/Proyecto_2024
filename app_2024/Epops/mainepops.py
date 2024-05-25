@@ -7,7 +7,7 @@ import verstp
 import time
 import leer
 import tp_linkssh
-import f
+import sh_tplink
 import obt_infyam
 import obt_tplink
 import obt_root
@@ -16,6 +16,8 @@ import tree
 import dtsnmp
 import os
 import json
+
+flag_change = True
 
 def main_top(direc):
     
@@ -47,7 +49,8 @@ def main_top(direc):
     b_id,f1,fif1= bridge_id.bri_id(direc,datos)
     st_inf,f2,fif2 = stp_info.stp_inf(direc,datos)
     #Proceso extra para conmutadores TPLINK
-    f.epmiko(credenciales[iptp[0]]["usuario"],credenciales[iptp[0]]["contrasena"], iptp)
+    
+    sh_tplink.epmiko(credenciales[iptp[0]]["usuario"],credenciales[iptp[0]]["contrasena"], iptp)
     tp_d = leer.fil_bid("b_id.txt")
     stn = tp_linkssh.tplink_id(b_root,st_inf,tp_d,iptp)
 
@@ -84,6 +87,7 @@ def main_top(direc):
     TOPOLOGIA_CACHE = tree.leer_topologia_cache(RUTA_ARCHIVO_TOPOLOGIA_CACHE)
     tree.guardar_archivo_topologia(DICCIONARIO_TOPOLOGIA, CABECERA_ARCHIVO_TOPOLOGIA, RUTA_ARCHIVO_TOPOLOGIA)
     tree.guardar_topologia_cache(DICCIONARIO_TOPOLOGIA, RUTA_ARCHIVO_TOPOLOGIA_CACHE)
+    
 
     if TOPOLOGIA_CACHE:
         DATOS_DIFERENCIA = tree.generar_topologia_diferencias(TOPOLOGIA_CACHE, DICCIONARIO_TOPOLOGIA)
@@ -94,9 +98,17 @@ def main_top(direc):
                             len(DATOS_DIFERENCIA[0]['deleted']) > 0 or
                             len(DATOS_DIFERENCIA[1]['added']) > 0 or
                             len(DATOS_DIFERENCIA[1]['deleted']) > 0)
-        if cambio_topologia:
-            with open('/home/paola/Documentos/app2024/src/public/js/changes_flag.json', 'w') as f:
-                json.dump({'changes': True}, f)
+        
+        if cambio_topologia or flag_change == True:
+            if flag_change == True:
+                with open('/home/paola/Documentos/app2024/src/public/js/changes_flag.json', 'w') as f:
+                    json.dump({'changes': False}, f)
+                flag_change = False
+            else:
+                with open('/home/paola/Documentos/app2024/src/public/js/changes_flag.json', 'w') as f:
+                    json.dump({'changes': True}, f)
+                flag_change = False
+
     else:
         # Guarda la topología actual en el archivo de diferencias si falta el caché
         tree.guardar_archivo_topologia(DICCIONARIO_TOPOLOGIA, CABECERA_ARCHIVO_TOPOLOGIA, RUTA_ARCHIVO_DIFERENCIAS_TOPOLOGIA)
